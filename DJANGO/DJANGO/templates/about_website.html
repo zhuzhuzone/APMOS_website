@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% include 'base.html' %}
+<br/>
+<style>
+    h2.A{color:deepskyblue;}
+</style>
+
+<h1 align="center">功能说明</h1>
+<h2 class = 'A'>首页：Index</h2>
+<b>Apmos Search (date format:2018-06-01): </b>
+<p>提供三种查询APMOS数据方式：ap_code, exch_trade_id, trade_datetime，支持下载；</p>
+<p>特色用法: 在ap_code中输入 “ap_code,10,20”，数字代表index序号，可以求得volume的和，主要用来做position rec；</p>
+<b>Feed Mapping: </b><p>可以通过ap_code查找同属一个product_class的产品信息，主要用来查询close time；</p>
+<b>Apcode In Some Day: </b><p>可以通过ap_code和起始时间查找这个品种在一段时间内按照价格对volume的分布；</p>
+<p>特色用法: 在ap_code中输入 “ap_code,10,20”，数字代表index序号，可以求得rec_mark的和，主要用来做trade rec；</p>
+
+<h2 class = 'A'>更新：UpdateAPMOS</h2>
+<b>UpdateAPMOS:</b>
+<p>可以通过在csv文件中输入exch_trade_id来更新APMOS数据库，目前支持更改trader_id, book, account, counterparty；</p>
+
+<h2 class = 'A'>均价：AVG Price</h2>
+<b>AVG price(date format:2018-06-01): </b>
+<p>提供两种计算均价的方式：ap_code, bb_ticker，支持下载；</p>
+
+<h2 class = 'A'>提克：bb ticker</h2>
+<b>OK! bb ticker:</b>
+<P>读取了APMOS自成立以来的所有bb_ticker ap_code feedcode数据，可以通过网页查找的方式使用；</P>
+
+</body>
+</html>

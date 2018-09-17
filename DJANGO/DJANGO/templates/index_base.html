@@ -1,0 +1,43 @@
+<br/>
+<style>
+    b.A{color:deepskyblue;}
+</style>
+<p><b class="A">Apmos Search </b>&nbsp;&nbsp;(date format:2018-06-01)</p>
+<form method="get" action="/ApmosSearch/">
+    {% csrf_token %}
+    <div style="margin-bottom:20px; text-align:left;">
+
+        <select name="search_type">
+            <option value="ap_code">ap_code</option>
+            <option value="exch_trade_id">exch_trade_id</option>
+            <option value="trade_datetime">trade_datetime</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;<input type="search"  name="search_value" >
+
+        <button type="submit">submit</button>
+    </div>
+</form>
+
+
+
+<p><b class="A">Feed Mapping</b></p>
+<form method="get" action="/FindFeedcode/">
+    {% csrf_token %}
+    <div style="margin-bottom:20px; text-align:left;">
+        ap_code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="search" name="FindFeedcode" placeholder="" required>
+        <button type="submit">submit</button>
+    </div>
+</form>
+
+<p><b class="A">Apcode In Some Day</b></p>
+<form method="get" action="/FindPriceVolume/">
+    {% csrf_token %}
+    <div style="margin-bottom:20px; text-align:left;">
+        ap_code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="search"  name="code_value" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        start_time&nbsp;<input type="search"  name="start_time" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        end_time&nbsp;<input type="search" name="end_time" >
+        <button type="submit">submit</button>
+    </div>
+</form>
+<hr>
+<br>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+{% include 'base.html' %}
+<body>
+{% include 'index_base.html' %}
+
+<table border="1" cellpadding="2" align="left">
+    <caption><b>calculation(max 5 lines)</b></caption>
+    <thead>
+    <tr>
+        <th>trade_datetime</th>
+        <th>account</th>
+        <th>side</th>
+        <th>volume</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for n in total_sum %}
+    <tr>
+        <td>{{ n.trade_datetime }}</td>
+        <td>{{ n.account }}</td>
+        <td>{{ n.side }}</td>
+        <td>{{ n.volume }}</td>
+
+    </tr>
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+
+
+<table id = 'IndexTable' border="1" cellpadding="1" align="center">
+    <caption><b>result&nbsp;{{ total_volume }}</b></caption>
+    <thead>
+    <tr>
+        <th>index</th>
+        <th>trade_datetime</th>
+        <th>trader_id</th>
+        <th>book</th>
+        <th>account</th>
+        <th>counterparty</th>
+        <th>ap_code</th>
+        <th>side</th>
+        <th>price</th>
+        <th>volume</th>
+        <th>source</th>
+        <th>is_cfd</th>
+        <th>exch_trade_id</th>
+        <th>create_datetime</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for n in df %}
+    <tr>
+        <td>{{ n.index }}</td>
+        <td>{{ n.trade_datetime }}</td>
+        <td>{{ n.trader_id }}</td>
+        <td>{{ n.book }}</td>
+        <td>{{ n.account }}</td>
+        <td>{{ n.counterparty }}</td>
+        <td>{{ n.ap_code }}</td>
+        <td>{{ n.side }}</td>
+        <td>{{ n.price }}</td>
+        <td>{{ n.volume }}</td>
+        <td>{{ n.source }}</td>
+        <td>{{ n.is_cfd }}</td>
+        <td>{{ n.exch_trade_id }}</td>
+        <td>{{ n.create_datetime }}</td>
+    </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<a id="dlink"  style="display:none;"></a>
+<input type="button" onclick="tableToExcel('IndexTable', 'name', 'Apmos_website.xls')" value="Download" >
+
+<script type="text/javascript">
+        var tableToExcel = (function () {
+            var uri = 'data:application/vnd.ms-excel;base64,',
+                template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+                base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) },
+                format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) };
+            return function (table, name, filename) {
+                if (!table.nodeType) table = document.getElementById(table)
+                var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+
+                document.getElementById("dlink").href = uri + base64(format(template, ctx));
+                document.getElementById("dlink").download = filename;
+                document.getElementById("dlink").click();
+            }
+        })()
+    </script>
+
+
+</body>
+</html>

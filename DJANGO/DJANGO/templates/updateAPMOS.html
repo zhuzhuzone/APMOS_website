@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% include 'base.html' %}
+<br/>
+
+<style>
+    b.A{color:deepskyblue;}
+</style>
+
+<p><b class="A">UpdateAPMOS</b></p>
+{% for n in files_list %}
+    {{n}}<br>
+{% endfor %}
+<br>
+<hr>
+
+<p><b class="A">Step1: Fill</b></p>
+<form method="get" action="/UpdateAPMOS/">
+    {% csrf_token %}
+    <div style="margin-bottom:20px; text-align:left;">
+        file_name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="search"  name="FILE_NAME" placeholder="" required><br><br>
+        trader_name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="search"  name="CHANGE_TRADER_NAME" ><br><br>
+        book_name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="search" name="CHANGE_BOOK_NAME" ><br><br>
+        account&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="search" name="ACCOUNT" ><br><br>
+        counterpary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="search" name="COUNTERPARTY" ><br>
+        <br>
+        <button type="submit">submit  我填好啦！ </button>
+    </div>
+</form>
+
+<hr>
+<br>
+
+<form method="get" action="/UpdateResult/">
+    {% csrf_token %}
+    <div style="margin-bottom:20px; text-align:left;">
+        <p><b class="A">Step2: Confirm</b></p>
+        <h>file_name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h>{{ FILE_NAME }}<input name="FILE_NAME" type="hidden" }><br>
+        <input name="cache_file_name" type="hidden" value={{ cache_file_name }}>
+        <h>how much:&nbsp;&nbsp;&nbsp;&nbsp;</h>{{ HOW_MUCH }}<input name="HOW_MUCH" type="hidden" value={{ HOW_MUCH }}><br>
+
+        <h>trader_id:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h>{{ CHANGE_TRADER_NAME }}<input name="CHANGE_TRADER_NAME" type="hidden" value={{ CHANGE_TRADER_NAME }}><br>
+        <input name="trader_mark" type="hidden" value={{ trader_mark }}>
+
+        <h>book:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h>{{ CHANGE_BOOK_NAME }}<input name="CHANGE_BOOK_NAME" type="hidden" value={{ CHANGE_BOOK_NAME }}><br>
+        <input name="book_mark" type="hidden" value={{ book_mark }}>
+
+        <h>account:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h>{{ ACCOUNT }}<input name="ACCOUNT" type="hidden" value={{ ACCOUNT }}><br>
+        <input name="account_mark" type="hidden" value={{ account_mark }}>
+
+        <h>counterparty:&nbsp;&nbsp;&nbsp;</h>{{ COUNTERPARTY }}<input name="COUNTERPARTY" type="hidden" value={{ COUNTERPARTY }}><br>
+        <input name="counterparty_mark" type="hidden" value={{ counterparty_mark }}>
+        <br>
+       <button type="submit">submit  加油噢！摩斯君</button>
+    </div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+{% include 'base.html' %}
+<body>
+{% include 'index_base.html' %}
+
+
+
+<table border="1" cellpadding="10" align="center">
+    <caption><b>{{ ap_code }}&nbsp;&nbsp;</b><br><b>{{ start_time }}</b>----<b> {{ end_time }}</b><br><b>rec mark: {{ rec_mark }}</b></caption>
+    <thead>
+    <tr>
+        <th>index</th>
+        <th>account</th>
+        <th>side</th>
+        <th>price</th>
+        <th>volume</th>
+        <th>trade_datetime</th>
+        <th>rec_mark</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for n in  df%}
+        <tr>
+            <td>{{ n.index }}</td>
+            <td>{{ n.account }}</td>
+            <td>{{ n.side }}</td>
+            <td>{{ n.price }}</td>
+            <td>{{ n.volume }}</td>
+            <td>{{ n.trade_datetime }}</td>
+            <td>{{ n.rec_mark }}</td>
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+</table>
+
+
+</body>
+</html>

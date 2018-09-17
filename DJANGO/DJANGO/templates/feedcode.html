@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+{% include 'base.html' %}
+<body>
+{% include 'index_base.html' %}
+
+
+
+<table border="1" cellpadding="2" align="center">
+    <thead>
+    <tr>
+        <th>ap_code</th>
+        <th>bb_ticker</th>
+        <th>exchange_code</th>
+        <th>product_class</th>
+        <th>feedcode</th>
+        <th>statement_delta</th>
+        <th>statement_delta_weekend</th>
+        <th>close_time</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for n in cache %}
+        <tr>
+            <td>{{ n.ap_code }}</td>
+            <td>{{ n.bb_ticker }}</td>
+            <td>{{ n.exchange_code }}</td>
+            <td>{{ n.product_class }}</td>
+            <td>{{ n.feedcode }}</td>
+            <td>{{ n.statement_delta }}</td>
+            <td>{{ n.statement_delta_weekend }}</td>
+            <td>{{ n.close_time }}</td>
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+</table>
+</body>
+</html>

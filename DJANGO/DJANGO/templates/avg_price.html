@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% include 'base.html' %}
+<br/>
+
+<style>
+    b.A{color:deepskyblue;}
+</style>
+
+<p><b class="A">AVG price</b>&nbsp;&nbsp;(date format:2018-06-01)</p>
+<form method="get" action="/FindAVGPrice/">
+    {% csrf_token %}
+    <div style="margin-bottom:20px; text-align:left;">
+
+        <select name="code_type">
+            <option value="bb_ticker">bb_ticker</option>
+            <option value="ap_code">ap_code</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="search"  name="code_value" ><br><br>
+        start_time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="search"  name="start_time" ><br><br>
+        end_time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="search" name="end_time" >
+        <br>
+        <br>
+        <button type="submit">submit</button>
+    </div>
+</form>
+<hr>
+
+<table id="IndexTable" border="1" cellpadding="2" align="left">
+    <caption><b>{{ ap_code }}&nbsp;&nbsp;</b><br><b>{{ start_time }}</b>----<b> {{ end_time }}</b></caption>
+    <thead>
+    <tr>
+        <th>trader_id</th>
+        <th>book</th>
+        <th>account</th>
+        <th>side</th>
+        <th>volume</th>
+        <th>AVG_price</th>
+        <th>trade_amount</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for n in df %}
+    <tr>
+        <td>{{ n.trader_id }}</td>
+        <td>{{ n.book }}</td>
+        <td>{{ n.account }}</td>
+        <td>{{ n.side }}</td>
+        <td>{{ n.volume }}</td>
+        <td>{{ n.AVG_price }}</td>
+        <td>{{ n.trade_amount }}</td>
+
+
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<a id="dlink"  style="display:none;"></a>
+<input type="button" onclick="tableToExcel('IndexTable', 'name', 'AvgPrice.xls')" value="Download" >
+
+<script type="text/javascript">
+        var tableToExcel = (function () {
+            var uri = 'data:application/vnd.ms-excel;base64,',
+                template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+                base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) },
+                format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) };
+            return function (table, name, filename) {
+                if (!table.nodeType) table = document.getElementById(table)
+                var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+
+                document.getElementById("dlink").href = uri + base64(format(template, ctx));
+                document.getElementById("dlink").download = filename;
+                document.getElementById("dlink").click();
+            }
+        })()
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% include 'base.html' %}
+<br />
+
+<table border="1" cellpadding="5" align="left">
+    <caption><b>Update Result</b></caption>
+    <thead>
+   <tr>
+        <th>trade_datetime</th>
+        <th>trader_id</th>
+        <th>book</th>
+        <th>account</th>
+        <th>counterparty</th>
+        <th>ap_code</th>
+        <th>side</th>
+        <th>price</th>
+        <th>volume</th>
+        <th>source</th>
+        <th>exch_trade_id</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for n in update_result %}
+    <tr>
+        <td>{{ n.trade_datetime }}</td>
+        <td>{{ n.trader_id }}</td>
+        <td>{{ n.book }}</td>
+        <td>{{ n.account }}</td>
+        <td>{{ n.counterparty }}</td>
+        <td>{{ n.ap_code }}</td>
+        <td>{{ n.side }}</td>
+        <td>{{ n.price }}</td>
+        <td>{{ n.volume }}</td>
+        <td>{{ n.source }}</td>
+        <td>{{ n.exch_trade_id }}</td>
+    </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+</body>
+</html>

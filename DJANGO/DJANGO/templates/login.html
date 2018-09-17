@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div style="width:285px; margin:100px auto 0;text-align:center;">
+    <img src="/templates/logo2.png" align = "center" width="100%"/><br><br>
+<h2>APMOS website</h2>
+    </div>
+<form method="post">
+    <div style="width:285px; margin:100px auto 0;text-align:center;">
+            {% csrf_token %}
+        {{uf.as_p}}
+
+        <div style="margin-bottom:20px; text-align:center;">
+            u:apmos  p:APMOS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="login">&nbsp;&nbsp;
+        </div>
+    </div>
+</form>
+</body>
+</html>
